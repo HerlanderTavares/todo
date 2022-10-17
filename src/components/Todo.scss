@@ -7,6 +7,7 @@
   padding: 4rem 0;
   $border: solid 2px color(main);
   border-bottom: $border;
+  gap: 1rem;
 
   &--info {
     flex: 1;
@@ -19,6 +20,13 @@
       color: color(main);
       font-weight: weight(bold);
     }
+  }
+
+  .description {
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
   }
 
   &--btns {

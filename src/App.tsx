@@ -5,7 +5,6 @@ import Form from './components/Form';
 import Todo from './components/Todo';
 import {useDispatch, useSelector} from 'react-redux';
 import {getStoredList, objType as todoType} from './redux/todoReducer';
-import {isPropertySignature} from 'typescript';
 
 const App: FC = () => {
   const dispatch = useDispatch();
