@@ -1,26 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './App.scss';
+import {FC, useEffect} from 'react';
+import {RootState} from './redux/store';
+import Form from './components/Form';
+import Todo from './components/Todo';
+import {useDispatch, useSelector} from 'react-redux';
+import {getStoredList, objType as todoType} from './redux/todoReducer';
 
-function App() {
+const App: FC = () => {
+  const dispatch = useDispatch();
+  const todoList: any = useSelector<RootState>(state => state.todoList);
+
+  const list = todoList.map((todo: todoType) => (
+    <Todo key={todo.id} date={todo.date} time={todo.time}>
+      {todo.description}
+    </Todo>
+  ));
+
+  useEffect(() => {
+    const storedList: string | null = localStorage.getItem('todo_list');
+    if (storedList) dispatch(getStoredList(JSON.parse(storedList)));
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="title">
+        <h1>Todo</h1>
+        <h2>With Redux</h2>
+      </div>
+      <div className="container">
+        <Form />
+        <ul className="todo-list">{list}</ul>
+      </div>
     </div>
   );
-}
+};
 
 export default App;

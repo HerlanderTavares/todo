@@ -1,0 +1,64 @@
+@import '../helpers.scss';
+
+.form {
+  width: 100%;
+  height: 100%;
+  border: $border;
+
+  $space: 2rem;
+  padding: $space;
+  gap: $space;
+  column-gap: 3rem;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  input {
+    width: 100%;
+    height: 5rem;
+    padding-left: 1rem;
+    font-size: 1.5rem;
+    font-family: inherit;
+
+    &:not(:first-child) {
+      border-bottom: solid 0.4rem color(main);
+    }
+
+    &:focus {
+      border-color: lightcoral;
+      outline: none;
+    }
+
+    &::placeholder {
+      font-family: inherit;
+      font-size: inherit;
+    }
+  }
+
+  button {
+    height: 80%;
+    aspect-ratio: 1;
+
+    border-radius: 50%;
+    margin-left: 1rem;
+
+    font-size: 2.5rem;
+    font-weight: weight(bold);
+    color: white;
+
+    @include box-shadow(0.2, 0.2, 0.7, 0.2);
+    background: linear-gradient(
+      to right,
+      darken(color(main), 20%),
+      color(main),
+      darken(color(main), 20%)
+    );
+  }
+
+  .description {
+    display: flex;
+    grid-column: span 2;
+    border-bottom: solid 0.4rem color(main);
+    align-items: center;
+  }
+}

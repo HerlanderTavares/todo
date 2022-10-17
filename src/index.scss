@@ -1,0 +1,31 @@
+@import "./helpers.scss";
+
+* {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  min-width: 35rem;
+}
+
+body {
+  font-family: font(main);
+  font-size: 2rem;
+  min-width: 35rem;
+}
+
+button {
+  background: none;
+  border: none;
+  font-size: inherit;
+  font-family: inherit;
+  cursor: pointer;
+
+  &:active {
+    scale: 0.85;
+  }
+}

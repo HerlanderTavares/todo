@@ -1,0 +1,46 @@
+@import '../helpers.scss';
+
+.list__item {
+  width: 100%;
+  height: 5rem;
+  @include flex(space-between, center);
+  padding: 4rem 0;
+  $border: solid 2px color(main);
+  border-bottom: $border;
+
+  &--info {
+    flex: 1;
+    overflow: hidden;
+    @include flex(center, start, column);
+    gap: 0.5rem;
+
+    .timestamp {
+      font-size: 0.7em;
+      color: color(main);
+      font-weight: weight(bold);
+    }
+  }
+
+  &--btns {
+    @include flex-center;
+    gap: 2rem;
+
+    button {
+      width: 1.5em;
+      height: 1.5em;
+
+      svg {
+        height: 100%;
+        width: 100%;
+      }
+    }
+
+    .complete svg {
+      color: green;
+    }
+
+    .delete svg {
+      color: red;
+    }
+  }
+}
