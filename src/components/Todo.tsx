@@ -1,10 +1,13 @@
 import './Todo.scss';
 import React, {FC} from 'react';
 import Icons from './Icons';
+import {removeTodo} from '../redux/todoReducer';
+import {useDispatch} from 'react-redux';
 
-type component = FC<{time?: string; date?: string; children: React.ReactNode}>;
+type component = FC<{id: string; time?: string; date?: string; children: React.ReactNode}>;
 
 const Todo: component = props => {
+  const dispatch = useDispatch();
   const date = props.date ? `${props.date}` : undefined;
   const time = props.time ? `${props.time}` : undefined;
 
@@ -14,7 +17,7 @@ const Todo: component = props => {
     </span>
   );
 
-  const remove = () => {};
+  const remove = () => dispatch(removeTodo({id: props.id}));
 
   return (
     <li className="list__item">

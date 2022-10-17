@@ -5,13 +5,14 @@ import Form from './components/Form';
 import Todo from './components/Todo';
 import {useDispatch, useSelector} from 'react-redux';
 import {getStoredList, objType as todoType} from './redux/todoReducer';
+import {isPropertySignature} from 'typescript';
 
 const App: FC = () => {
   const dispatch = useDispatch();
   const todoList: any = useSelector<RootState>(state => state.todoList);
 
   const list = todoList.map((todo: todoType) => (
-    <Todo key={todo.id} date={todo.date} time={todo.time}>
+    <Todo key={todo.id} id={todo.id} date={todo.date} time={todo.time}>
       {todo.description}
     </Todo>
   ));
